@@ -1,65 +1,157 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { SiteHeader } from '@/components/SiteHeader'
+import { SiteFooter } from '@/components/SiteFooter'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ArrowRight, Calculator, DollarSign, TrendingUp, Calendar, Fuel, Zap } from 'lucide-react'
 
-export default function Home() {
+const CALCULATORS = [
+  {
+    href: '/ifta-calculator',
+    icon: Calculator,
+    title: 'IFTA Fuel Tax Calculator',
+    description: 'Calculate quarterly IFTA fuel tax owed or refund per state. Enter miles and gallons by jurisdiction.',
+    badge: 'Most Popular',
+  },
+  {
+    href: '/cost-per-mile-calculator',
+    icon: DollarSign,
+    title: 'Cost Per Mile Calculator',
+    description: 'Know your true CPM by breaking down fixed and variable costs against total miles driven.',
+    badge: null,
+  },
+  {
+    href: '/load-profit-calculator',
+    icon: TrendingUp,
+    title: 'Load Profit Calculator',
+    description: 'See real net profit on any load after fuel, tolls, broker fees, and driver pay.',
+    badge: null,
+  },
+  {
+    href: '/per-diem-calculator',
+    icon: Calendar,
+    title: 'Per Diem Calculator',
+    description: 'Calculate your IRS per diem deduction and estimated tax savings for days on the road.',
+    badge: null,
+  },
+  {
+    href: '/fuel-surcharge-calculator',
+    icon: Fuel,
+    title: 'Fuel Surcharge Calculator',
+    description: 'Calculate the correct fuel surcharge to add to your rate based on current diesel prices.',
+    badge: null,
+  },
+]
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="flex flex-col min-h-screen">
+      <SiteHeader />
+
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="px-4 py-16 md:py-24 text-center">
+          <div className="max-w-3xl mx-auto">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/10">
+              Free · No Sign-Up · No Limits
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+              Free Trucking Calculators
+              <br />
+              <span className="text-primary">Built for Drivers</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+              IFTA, cost per mile, load profit, per diem, fuel surcharge — everything you need to
+              run a profitable trucking operation. Free forever, no account required.
+            </p>
+
+            {/* MissionAssist360 CTA */}
+            <div className="rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4 border border-primary/20 bg-primary/5 max-w-2xl mx-auto text-left">
+              <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+                <Zap className="h-5 w-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-semibold">Want all of this automated in one dashboard?</p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  MissionAssist360 handles IFTA tracking, invoicing, dispatch, and more — free trial, no credit card.
+                </p>
+              </div>
+              <Link
+                href="https://missionassist360.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline underline-offset-4 shrink-0"
+              >
+                Try Free →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Calculator Grid */}
+        <section className="px-4 pb-20">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-sm font-bold mb-6 text-center text-muted-foreground uppercase tracking-wider">
+              Choose a Calculator
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {CALCULATORS.map((calc) => {
+                const Icon = calc.icon
+                return (
+                  <Link key={calc.href} href={calc.href} className="group">
+                    <Card className="h-full border-border/60 hover:border-primary/40 hover:shadow-md transition-all duration-200 cursor-pointer">
+                      <CardContent className="p-5">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <Icon className="h-5 w-5 text-primary" />
+                          </div>
+                          {calc.badge && (
+                            <Badge variant="secondary" className="text-xs">{calc.badge}</Badge>
+                          )}
+                        </div>
+                        <h3 className="font-semibold text-sm mb-1.5 group-hover:text-primary transition-colors">
+                          {calc.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {calc.description}
+                        </p>
+                        <div className="mt-3 flex items-center gap-1 text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                          Open Calculator <ArrowRight className="h-3 w-3" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Why EasyDriver */}
+        <section className="px-4 pb-20 bg-muted/30">
+          <div className="max-w-3xl mx-auto py-16 text-center">
+            <h2 className="text-2xl font-bold mb-3">Why EasyDriver?</h2>
+            <p className="text-muted-foreground mb-10 text-sm leading-relaxed">
+              We built the cleanest, fastest trucking calculators on the web — no paywalls, no sign-ups,
+              no bloated interfaces. Just the math you need, instantly.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-6 text-left">
+              {[
+                { title: '100% Free', desc: 'Every calculator is free forever. No premium tier, no credit card.' },
+                { title: 'No Sign-Up', desc: 'Open a calculator and start. No account, no email, no friction.' },
+                { title: 'Built for Truckers', desc: 'By people who understand the industry — IFTA, CPM, per diem, and more.' },
+              ].map((f) => (
+                <div key={f.title} className="bg-card rounded-xl p-5 border border-border/60">
+                  <h3 className="font-bold text-sm mb-1.5">{f.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
+
+      <SiteFooter />
     </div>
-  );
+  )
 }
