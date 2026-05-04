@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { SiteHeader } from '@/components/SiteHeader'
-import { SiteFooter } from '@/components/SiteFooter'
+import { CalcPageLayout } from '@/components/CalcPageLayout'
+import { FadeIn } from '@/components/FadeIn'
 import { CtaBanner } from '@/components/CtaBanner'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -53,12 +53,11 @@ export default function FuelSurchargePage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <SiteHeader />
+    <CalcPageLayout>
+      <div className="px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-2xl space-y-8">
 
-      <main className="flex-1 px-4 py-10">
-        <div className="max-w-3xl mx-auto space-y-8">
-
+          <FadeIn>
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -66,11 +65,12 @@ export default function FuelSurchargePage() {
               </div>
               <h1 className="text-2xl md:text-3xl font-bold">Fuel Surcharge Calculator</h1>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed">
               Calculate the fuel surcharge to add to a load rate based on current diesel price and your
               surcharge schedule. Uses the standard increment-based surcharge method.
             </p>
           </div>
+          </FadeIn>
 
           <Card>
             <CardHeader><CardTitle className="text-base">Fuel Prices</CardTitle></CardHeader>
@@ -149,9 +149,7 @@ export default function FuelSurchargePage() {
           </Card>
 
         </div>
-      </main>
-
-      <SiteFooter />
-    </div>
+      </div>
+    </CalcPageLayout>
   )
 }

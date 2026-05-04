@@ -1,13 +1,20 @@
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 import Script from "next/script"
 import { Providers } from "@/components/Providers"
 import { CookieBanner } from "@/components/CookieBanner"
 import "./globals.css"
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+})
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -39,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Providers>
           {children}
